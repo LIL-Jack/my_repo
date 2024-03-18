@@ -1,0 +1,83 @@
+# My first meme created
+
+## Introduction
+Hi guys I'm currently taking a very interesting course named **stats220** data technoology, If you are interested please come to our [course introduction page ](https://courseoutline.auckland.ac.nz/dco/course/STATS/220/1243) And also my [personal github page!](https://github.com/LIL-Jack/stats220.git)
+
+### some idea about the meme
+I love playing basketball, so i use three pictures of brain to be my meme, and three words which is NBA Player, MVP Player and NBA Champ. That means if i am a NBA player which i am really good at basketball, MVP player have to be so smart and really skilful at basketball, NBA Champ is for incredible Player. 
+
+
+And this is my R code
+```library(magick)
+brain_1 <- image_read("brain_1.jpg") %>%  
+  image_scale(450)
+
+brain_2 <- image_read("brain_2.jpg") %>%
+  image_scale(450)
+
+brain_3 <- image_read("brain_3.webp") %>%
+  image_scale(450)
+
+# Creating text images
+text_1 <- image_blank(width = 300, 
+                          height = 300, 
+                          color = "#000000") %>%
+  image_annotate(text = "NBA Player",
+                 color = "#FFFFFF",
+                 size = 60,
+                 font = "Impact",
+                 gravity = "center")
+
+text_2 <- image_blank(width = 300, 
+                         height = 300, 
+                         color = "#000000") %>%
+  image_annotate(text = "MVP Player",
+                 color = "#FFFFFF",
+                 size = 60,
+                 font = "Impact",
+                 gravity = "center")
+
+text_3 <- image_blank(width = 300, 
+                       height = 300, 
+                       color = "#000000") %>%
+  image_annotate(text = "NBA Champ",
+                 color = "#FFFFFF",
+                 size = 60,
+                 font = "Impact",
+                 gravity = "center")
+
+# Appending images horizontally
+first_row <- c(brain_1, text_1) %>%
+  image_append()
+
+second_row <- c(brain_2, text_2) %>%
+  image_append()
+
+third_row <- c(brain_3, text_3) %>%
+  image_append()
+
+# Appending rows vertically to create a stacked image
+brain123 <- c(first_row, second_row, third_row) %>%
+  image_append(stack = TRUE)
+
+# Displaying the output image
+brain123
+
+
+# Read the image files into R using the image_read function
+brain_1 <- image_read("brain_1.jpg")
+brain_2 <- image_read("brain_2.jpg")
+brain_3 <- image_read("brain_3.webp")
+
+# Combine the three images into a single list using the c() function
+brain <- c(brain_1,brain_2, brain_3)
+
+# Append the images vertically to create a single image
+my_meme <- image_append(brain)
+
+my_meme
+
+
+
+image_write(meme, "my_meme.png")
+```
